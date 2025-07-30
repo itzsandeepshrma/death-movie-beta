@@ -41,6 +41,15 @@
 .marquee:hover {
   animation-play-state: paused;
     }
+    @media (max-width: 768px) {
+  #mobileMenu nav a {
+    padding-left: 0.5rem;
+    font-size: 1.25rem;
+  }
+  #mobileMenu {
+    padding-top: 6rem !important;
+  }
+    }
   </style>
 </head><body class="bg-black text-white dark:bg-white dark:text-black">
          <<!-- Top Scrolling Movie Posters Only (HDHub Style) -->
@@ -62,12 +71,19 @@
 
 
   <header class="w-full bg-black dark:bg-white border-b border-gray-700 dark:border-gray-300 p-4 relative z-50">
-  <div class="flex items-center justify-between">
+  <div class="flex items-center justify-between relative z-50">
 
-    <!-- Left: Logo -->
-    <div class="flex items-center gap-4">
-
-
+    <!-- Left: Hamburger + Logo -->
+<div class="flex items-center gap-3">
+  <!-- Hamburger -->
+  <div id="menu-btn" class="flex flex-col justify-center items-center space-y-1 cursor-pointer md:hidden focus:outline-none focus:ring-0">
+    <div class="w-6 h-0.5 bg-white dark:bg-black"></div>
+    <div class="w-6 h-0.5 bg-white dark:bg-black"></div>
+    <div class="w-6 h-0.5 bg-white dark:bg-black"></div>
+  </div>
+  <!-- Logo -->
+  <div class="text-lg font-bold text-white dark:text-black">Death Movie</div>
+</div>
       
       
 
@@ -86,16 +102,7 @@
 
 
       
-      <!-- Hamburger: Hidden on md and above -->
-      <div id="menu-btn" class="flex flex-col justify-center items-start space-y-1 cursor-pointer md:hidden focus:outline-none focus:ring-0">
-        <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
-        <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
-        <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
-      </div>
-
-      <!-- Logo -->
-      <div class="text-lg font-bold text-white dark:text-black">Death Movie</div>
-
+      
       <!-- Desktop Navigation: Only visible on md and above -->
       <nav class="hidden md:flex gap-6 text-white dark:text-black text-sm font-semibold ml-6">
         <a href="#" class="hover:text-red-500 transition">Hollywood</a>
@@ -129,7 +136,7 @@
     &times;
   </div>
 
-  <nav class="flex flex-col space-y-6 text-2xl font-extrabold text-white dark:text-black text-left pl-4">
+  <nav class="flex flex-col space-y-4 text-xl font-bold text-white dark:text-black text-left pl-2">
     <a href="#" class="hover:text-red-500 transition">Hollywood</a>
     <a href="#" class="hover:text-red-500 transition">Bollywood</a>
     <a href="#" class="hover:text-red-500 transition">Web Series</a>
@@ -330,6 +337,7 @@ document.addEventListener('click', function (e) {
   menuBtn.addEventListener("click", () => {
     if (!menuOpen) {
       mobileMenu.classList.remove("hidden");
+gsap.fromTo("#mobileMenu", { x: "-100%" }, { x: "0%", duration: 0.4, ease: "power2.out" });;
       gsap.fromTo("#mobileMenu nav a", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 });
       menuOpen = true;
     }
