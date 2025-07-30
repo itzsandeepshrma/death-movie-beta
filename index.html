@@ -65,16 +65,15 @@
       </nav>
     </div>
 
-    <!-- Right: Theme + Telegram -->
-    <div class="flex items-center gap-4">
-      <button onclick="toggleTheme()" class="text-xl text-white dark:text-black">
-        <span id="theme-icon-desktop">🌙</span>
-      </button>
-      <a href="https://t.me/deathchatting_world" target="_blank" class="text-blue-400 text-xl">
-        <i class="fab fa-telegram-plane"></i>
-      </a>
-    </div>
-  </div>
+<!-- Right: Theme + Telegram -->
+<div class="flex items-center gap-4">
+  <button onclick="toggleTheme()" aria-label="Toggle Theme">
+    <i id="theme-icon" class="fas fa-moon text-xl transition duration-300"></i>
+  </button>
+  <a href="https://t.me/deathchatting_world" target="_blank" class="text-blue-400 text-xl">
+    <i class="fab fa-telegram-plane"></i>
+  </a>
+</div>
   </header>
 
 
@@ -200,15 +199,25 @@
     </div>
   </div>
   </footer>
-  
-  
-  
-  
-  
-  
-  
-  
+
   <script>
+    
+  function toggleTheme() {
+  const html = document.documentElement;
+  const icon = document.getElementById('theme-icon');
+
+  if (html.classList.contains('dark')) {
+    html.classList.remove('dark');
+    icon.classList.remove('fa-sun');
+    icon.classList.add('fa-moon');
+  } else {
+    html.classList.add('dark');
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+  }
+}
+  
+
     function showDetails(title, genre, duration, rating) {
       document.getElementById('movieModal').classList.remove('hidden');
       document.getElementById('modalTitle').textContent = title;
