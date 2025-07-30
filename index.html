@@ -122,22 +122,23 @@
 
 
 
-  <!-- Mobile Navigation Menu -->
+<!-- Mobile Navigation Menu -->
 <div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 dark:bg-white dark:bg-opacity-90 hidden flex-col items-start justify-start z-40 px-6 pt-24">
   <!-- Close Button -->
-  <div class="absolute top-6 left-6 text-white dark:text-black text-3xl cursor-pointer" id="closeMenuBtn">
+  <div class="absolute top-6 right-6 text-white dark:text-black text-3xl cursor-pointer" id="closeMenuBtn">
+    &times;
   </div>
 
   <nav class="flex flex-col space-y-6 text-2xl font-extrabold text-white dark:text-black text-left pl-4">
-  <a href="#" class="hover:text-red-500 transition">Hollywood</a>
-  <a href="#" class="hover:text-red-500 transition">Bollywood</a>
-  <a href="#" class="hover:text-red-500 transition">Web Series</a>
-  <a href="#" class="hover:text-red-500 transition">Dual Audio</a>
-  <a href="#" class="hover:text-red-500 transition">K-Drama</a>
-  <a href="#" class="hover:text-red-500 transition">Horror</a>
+    <a href="#" class="hover:text-red-500 transition">Hollywood</a>
+    <a href="#" class="hover:text-red-500 transition">Bollywood</a>
+    <a href="#" class="hover:text-red-500 transition">Web Series</a>
+    <a href="#" class="hover:text-red-500 transition">Dual Audio</a>
+    <a href="#" class="hover:text-red-500 transition">K-Drama</a>
+    <a href="#" class="hover:text-red-500 transition">Horror</a>
+    <a href="#" class="hover:text-red-500 transition">Coding</a> <!-- ~  -->
   </nav>
 </div>
-
   
     
   
@@ -325,6 +326,7 @@ document.addEventListener('click', function (e) {
   const closeMenuBtn = document.getElementById("closeMenuBtn");
   let menuOpen = false;
 
+  // Open menu with animation
   menuBtn.addEventListener("click", () => {
     if (!menuOpen) {
       mobileMenu.classList.remove("hidden");
@@ -333,6 +335,7 @@ document.addEventListener('click', function (e) {
     }
   });
 
+  // Close menu with animation
   closeMenuBtn.addEventListener("click", () => {
     gsap.to("#mobileMenu nav a", {
       opacity: 0, y: -20, duration: 0.3, stagger: 0.05, ease: "power2.in", onComplete: () => {
@@ -342,10 +345,12 @@ document.addEventListener('click', function (e) {
     });
   });
 
-  // Optional: Close on Escape
+  // Optional: Close on Escape key press
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && menuOpen) closeMenuBtn.click();
   });
+</script>
+<script>
 
   // Active link highlight logic
   const navLinks = document.querySelectorAll("header nav a");
