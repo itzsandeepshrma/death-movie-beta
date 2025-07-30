@@ -116,8 +116,8 @@
   
   <!-- Hero Slider Section -->
 <!-- Premium Tagline Section -->
-<section id="premiumTagline" class="h-[90vh] md:h-[70vh] w-full bg-black flex items-center justify-center">
-  <p class="text-red-500 text-xl md:text-5xl font-extrabold tracking-wider text-center drop-shadow-[0_0_10px_rgba(255,0,0,0.5)]">
+<section id="premiumTagline" class="h-[90vh] md:h-[70vh] w-full bg-dark white:bg-black flex items-center justify-center">
+  <p class="text-red-600 dark:text-red-500 text-xl md:text-5xl font-extrabold tracking-wider text-center drop-shadow-[0_0_10px_rgba(255,0,0,0.5)]">
     Your premium destination for high quality Movies
   </p>
 </section>
@@ -347,6 +347,18 @@
       navLinks.forEach(l => l.classList.remove("text-red-500", "active-link"));
       link.classList.add("text-red-500", "active-link");
     });
+  });
+  </script>
+  <script>
+  gsap.from("#premiumTagline p, #premiumTagline a", {
+    opacity: 0,
+    y: 30,
+    duration: 1,
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: "#premiumTagline",
+      start: "top 80%",
+    }
   });
   </script>
 </body>
