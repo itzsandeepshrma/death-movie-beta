@@ -30,34 +30,44 @@
     outline: none !important;
     box-shadow: none !important;
   }
-    @media (max-width: 768px) {
-  #mobileMenu nav a {
-    padding-left: 0.5rem;
-    font-size: 1.25rem;
-  }
-  #mobileMenu {
-    padding-top: 6rem !important;
-  }
+    @keyframes scroll-marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.marquee {
+  animation: scroll-marquee 45s linear infinite;
+  will-change: transform;
+}
+.marquee:hover {
+  animation-play-state: paused;
     }
   </style>
 </head><body class="bg-black text-white dark:bg-white dark:text-black">
+         <<!-- Top Scrolling Movie Posters Only (HDHub Style) -->
+<<div class="w-full overflow-hidden bg-gray-900 dark:bg-gray-100 border-b border-gray-700 dark:border-gray-300 py-4">
+  <div class="marquee flex items-center gap-4 sm:gap-6 px-4 whitespace-nowrap overflow-x-auto">
+    <img src="https://image.tmdb.org/t/p/w300/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" class="inline-block w-[140px] h-[210px] object-cover rounded-lg shadow" alt="">
+    <img src="https://image.tmdb.org/t/p/w300/or06FN3Dka5tukK1e9sl16pB3iy.jpg" class="inline-block w-[140px] h-[210px] object-cover rounded-lg shadow" alt="">
+    <img src="https://image.tmdb.org/t/p/w300/3pTwMUEavTzVOh6yLN0aEwR7uSy.jpg" class="inline-block w-[140px] h-[210px] object-cover rounded-lg shadow" alt="">
+    <img src="https://image.tmdb.org/t/p/w300/gEU2QniE6E77NI6MxlNBvIx.jpg" class="inline-block w-[140px] h-[210px] object-cover rounded-lg shadow" alt="">
+    <img src="https://image.tmdb.org/t/p/w300/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg" class="inline-block w-[140px] h-[210px] object-cover rounded-lg shadow" alt="">
+    <img src="https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" class="inline-block w-[140px] h-[210px] object-cover rounded-lg shadow" alt="">
+    <img src="https://image.tmdb.org/t/p/w300/4UjiPdFKJGJYdxwRs2Rzg7EmWqr.jpg" class="inline-block w-[140px] h-[210px] object-cover rounded-lg shadow" alt="">
+    <img src="https://image.tmdb.org/t/p/w300/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg" class="inline-block w-[140px] h-[210px] object-cover rounded-lg shadow" alt="">
+    <img src="https://image.tmdb.org/t/p/w300/jfM42Pik8SQ8P1iZyN8dEFZqYxL.jpg" class="inline-block w-[140px] h-[210px] object-cover rounded-lg shadow" alt="">
+    <img src="https://image.tmdb.org/t/p/w300/xuCHkaxkkq1Y5C2nU6T8Xz5d6V7.jpg" class="inline-block w-[140px] h-[210px] object-cover rounded-lg shadow" alt="">
+  </div>
+</div>
 <!-- Header -->
 
 
   <header class="w-full bg-black dark:bg-white border-b border-gray-700 dark:border-gray-300 p-4 relative z-50">
-  <div class="flex items-center justify-between relative z-50">
+  <div class="flex items-center justify-between">
 
-    <!-- Left: Hamburger + Logo -->
-<div class="flex items-center gap-3">
-  <!-- Hamburger -->
-  <div id="menu-btn" class="flex flex-col justify-center items-center space-y-1 cursor-pointer md:hidden focus:outline-none focus:ring-0">
-    <div class="w-6 h-0.5 bg-white dark:bg-black"></div>
-    <div class="w-6 h-0.5 bg-white dark:bg-black"></div>
-    <div class="w-6 h-0.5 bg-white dark:bg-black"></div>
-  </div>
-  <!-- Logo -->
-  <div class="text-lg font-bold text-white dark:text-black">Death Movie</div>
-</div>
+    <!-- Left: Logo -->
+    <div class="flex items-center gap-4">
+
+
       
       
 
@@ -76,7 +86,16 @@
 
 
       
-      
+      <!-- Hamburger: Hidden on md and above -->
+      <div id="menu-btn" class="flex flex-col justify-center items-start space-y-1 cursor-pointer md:hidden focus:outline-none focus:ring-0">
+        <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
+        <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
+        <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
+      </div>
+
+      <!-- Logo -->
+      <div class="text-lg font-bold text-white dark:text-black">Death Movie</div>
+
       <!-- Desktop Navigation: Only visible on md and above -->
       <nav class="hidden md:flex gap-6 text-white dark:text-black text-sm font-semibold ml-6">
         <a href="#" class="hover:text-red-500 transition">Hollywood</a>
@@ -103,23 +122,22 @@
 
 
 
-<!-- Mobile Navigation Menu -->
+  <!-- Mobile Navigation Menu -->
 <div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 dark:bg-white dark:bg-opacity-90 hidden flex-col items-start justify-start z-40 px-6 pt-24">
   <!-- Close Button -->
-  <div class="absolute top-6 right-6 text-white dark:text-black text-3xl cursor-pointer" id="closeMenuBtn">
-    &times;
+  <div class="absolute top-6 left-6 text-white dark:text-black text-3xl cursor-pointer" id="closeMenuBtn">
   </div>
 
-  <nav class="flex flex-col space-y-4 text-xl font-bold text-white dark:text-black text-left pl-2">
-    <a href="#" class="hover:text-red-500 transition">Hollywood</a>
-    <a href="#" class="hover:text-red-500 transition">Bollywood</a>
-    <a href="#" class="hover:text-red-500 transition">Web Series</a>
-    <a href="#" class="hover:text-red-500 transition">Dual Audio</a>
-    <a href="#" class="hover:text-red-500 transition">K-Drama</a>
-    <a href="#" class="hover:text-red-500 transition">Horror</a>
-    <a href="#" class="hover:text-red-500 transition">Coding</a> <!-- ~  -->
+  <nav class="flex flex-col space-y-6 text-2xl font-extrabold text-white dark:text-black text-left pl-4">
+  <a href="#" class="hover:text-red-500 transition">Hollywood</a>
+  <a href="#" class="hover:text-red-500 transition">Bollywood</a>
+  <a href="#" class="hover:text-red-500 transition">Web Series</a>
+  <a href="#" class="hover:text-red-500 transition">Dual Audio</a>
+  <a href="#" class="hover:text-red-500 transition">K-Drama</a>
+  <a href="#" class="hover:text-red-500 transition">Horror</a>
   </nav>
 </div>
+
   
     
   
@@ -307,17 +325,14 @@ document.addEventListener('click', function (e) {
   const closeMenuBtn = document.getElementById("closeMenuBtn");
   let menuOpen = false;
 
-  // Open menu with animation
   menuBtn.addEventListener("click", () => {
     if (!menuOpen) {
       mobileMenu.classList.remove("hidden");
-gsap.fromTo("#mobileMenu", { x: "-100%" }, { x: "0%", duration: 0.4, ease: "power2.out" });;
       gsap.fromTo("#mobileMenu nav a", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 });
       menuOpen = true;
     }
   });
 
-  // Close menu with animation
   closeMenuBtn.addEventListener("click", () => {
     gsap.to("#mobileMenu nav a", {
       opacity: 0, y: -20, duration: 0.3, stagger: 0.05, ease: "power2.in", onComplete: () => {
@@ -327,12 +342,10 @@ gsap.fromTo("#mobileMenu", { x: "-100%" }, { x: "0%", duration: 0.4, ease: "powe
     });
   });
 
-  // Optional: Close on Escape key press
+  // Optional: Close on Escape
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && menuOpen) closeMenuBtn.click();
   });
-</script>
-<script>
 
   // Active link highlight logic
   const navLinks = document.querySelectorAll("header nav a");
