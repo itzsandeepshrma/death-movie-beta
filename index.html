@@ -30,6 +30,10 @@
     outline: none !important;
     box-shadow: none !important;
   }
+    .no-scroll {
+  overflow: hidden;
+  height: 100vh;
+    }
   </style>
 </head><body class="bg-black text-white dark:bg-white dark:text-black">
 <!-- Header -->
@@ -80,6 +84,7 @@
 <div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 dark:bg-white dark:bg-opacity-90 hidden flex-col items-start justify-start z-40 px-6 pt-24">
   <!-- Close Button -->
   <div class="absolute top-6 left-6 text-white dark:text-black text-3xl cursor-pointer" id="closeMenuBtn">
+  &times;
   </div>
 
   <nav class="flex flex-col space-y-6 text-2xl font-extrabold text-white dark:text-black text-left pl-4">
@@ -216,18 +221,7 @@
       document.getElementById('movieModal').classList.add('hidden');
     }
 
-    
-
-// Optional: close dropdown if clicked outside
-document.addEventListener('click', function (e) {
-  const dropdown = document.getElementById('menuDropdown');
-  const button = e.target.closest('button');
-  if (!dropdown.contains(e.target) && (!button || button.textContent !== 'Menu')) {
-    dropdown.classList.add('hidden');
-    dropdown.classList.remove('block');
-  }
-});
-
+  
     gsap.from('section', {opacity: 0, y: 50, duration: 1, stagger: 0.2});
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -277,29 +271,51 @@ document.addEventListener('click', function (e) {
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobileMenu");
   const closeMenuBtn = document.getElementById("closeMenuBtn");
+  const mobileLinks = mobileMenu.querySelectorAll("a");
   let menuOpen = false;
 
-  menuBtn.addEventListener("click", () => {
-    if (!menuOpen) {
-      mobileMenu.classList.remove("hidden");
-      gsap.fromTo("#mobileMenu nav a", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 });
-      menuOpen = true;
-    }
-  });
+  function openMenu() {
+    mobileMenu.classList.remove("hidden");
+    document.body.classList.add("no-scroll");
+    gsap.fromTo("#mobileMenu nav a", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 });
+    menuOpen = true;
+  }
 
-  closeMenuBtn.addEventListener("click", () => {
+  function closeMenu() {
     gsap.to("#mobileMenu nav a", {
       opacity: 0, y: -20, duration: 0.3, stagger: 0.05, ease: "power2.in", onComplete: () => {
         mobileMenu.classList.add("hidden");
+        document.body.classList.remove("no-scroll");
         menuOpen = false;
       }
     });
+  }
+
+  menuBtn.addEventListener("click", openMenu);
+  closeMenuBtn.addEventListener("click", closeMenu);
+
+  // Close on link click inside mobile menu
+  mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      closeMenu();
+    });
   });
 
-  // Optional: Close on Escape
+  // Close on Escape
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && menuOpen) closeMenuBtn.click();
+    if (e.key === "Escape" && menuOpen) closeMenu();
   });
+
+  // Highlight active link (for desktop nav)
+  const navLinks = document.querySelectorAll("header nav a");
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.forEach(l => l.classList.remove("text-red-500", "active-link"));
+      link.classList.add("text-red-500", "active-link");
+    });
+  });
+</script>
+  <script>
 
   // Active link highlight logic
   const navLinks = document.querySelectorAll("header nav a");
