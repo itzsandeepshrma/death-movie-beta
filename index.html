@@ -126,22 +126,27 @@
 
 
   <!-- Premium Tagline Section with Search Bar -->
-<section id="premiumTagline" class="w-full bg-black dark:bg-white flex flex-col items-center justify-center py-10 px-4 space-y-6 transition duration-300">
+<section id="premiumTagline" class="w-full bg-dark dark:bg-white flex flex-col items-center justify-center py-10 px-4 space-y-6 transition duration-300">
 
-  <!-- Search Bar -->
-  <div class="relative w-full max-w-xl">
-    <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-      viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round"
-        d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z" />
-    </svg>
-    <input
-      type="text"
-      placeholder="Search high-quality movies..."
-      class="w-full pl-12 pr-4 py-3 rounded-full bg-black/5 dark:bg-white/10 backdrop-blur-md text-black dark:text-white placeholder-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 transition shadow-inner"
-    />
-  </div>
-
+<!-- Search Bar -->
+<div class="relative w-full max-w-xl mx-auto shadow-lg">
+  <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+    viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round"
+      d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z" />
+  </svg>
+  <input
+    type="text"
+    placeholder="Search high-quality movies..."
+    class="w-full pl-12 pr-4 py-3 rounded-full 
+           bg-white text-black 
+           dark:bg-zinc-800 dark:text-white 
+           placeholder-gray-500 dark:placeholder-gray-400 
+           border border-gray-300 dark:border-zinc-700 
+           focus:outline-none focus:ring-2 focus:ring-red-600 
+           transition duration-300"
+  />
+</div>
   <!-- Tagline -->
   <p class="text-red-500 text-sm sm:text-base md:text-lg font-semibold tracking-wide text-center whitespace-nowrap">
     Your premium destination for high quality Movies
