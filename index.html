@@ -371,10 +371,12 @@ closeMenuBtn.addEventListener("click", closeMenu);
     opacity: 0,
     y: 30,
     duration: 1,
-    document.addEventListener('click', (e) => {
+    // Outside GSAP animation
+document.addEventListener('click', (e) => {
   const isMenuButton = menuBtn.contains(e.target);
+  const isInsideMenu = mobileMenu.contains(e.target);
 
-  if (menuOpen && !isMenuButton) {
+  if (menuOpen && !isMenuButton && !isInsideMenu) {
     closeMenu();
   }
 });
