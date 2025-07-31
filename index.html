@@ -49,6 +49,17 @@
       color: #ff0000;
       transform: scale(1.2);
     }
+    .movie-slide {
+    height: 160px; /* smaller size */
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+    will-change: transform;
+  }
+
+  #sliderWrapper:hover .movie-slide {
+    pointer-events: auto;
+  }
   </style>
 </head><body class="bg-black text-white dark:bg-white dark:text-black">
 <!-- Header -->
@@ -114,18 +125,31 @@
     
   
   
-  <!-- Hero Slider Section -->
-<!-- Premium Tagline Section -->
-<section id="premiumTagline" class="h-[90vh] md:h-[70vh] w-full bg-dark white:bg-black flex items-center justify-center">
-  <p class="text-red-600 dark:text-red-500 text-xl md:text-5xl font-extrabold tracking-wider text-center drop-shadow-[0_0_10px_rgba(255,0,0,0.5)]">
+
+  
+
+<!-- Your Tagline Section -->
+<section id="premiumTagline" class="h-auto w-full bg-black flex items-center justify-center py-12 px-4">
+  <p class="text-red-500 text-xl md:text-5xl font-extrabold tracking-wider text-center drop-shadow-[0_0_10px_rgba(255,0,0,0.8)]">
     Your premium destination for high quality Movies
   </p>
 </section>
-  
 
-  
-
-  
+<!-- Movie Poster Slider -->
+<section id="movieSlider" class="w-full overflow-hidden py-10">
+  <h2 class="text-3xl font-bold text-center mb-6">Trending Movies</h2>
+  <div id="sliderWrapper" class="flex gap-4 px-6 w-max">
+    <!-- Movie Posters -->
+    <img src="https://image.tmdb.org/t/p/w300/3pTwMUEavTzVOh6yLN0aEwR7uSy.jpg" alt="Poster" class="movie-slide">
+    <img src="https://image.tmdb.org/t/p/w300/or06FN3Dka5tukK1e9sl16pB3iy.jpg" alt="Poster" class="movie-slide">
+    <img src="https://image.tmdb.org/t/p/w300/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg" alt="Poster" class="movie-slide">
+    <img src="https://image.tmdb.org/t/p/w300/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Poster" class="movie-slide">
+    <img src="https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" alt="Poster" class="movie-slide">
+    <img src="https://image.tmdb.org/t/p/w300/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg" alt="Poster" class="movie-slide">
+    <img src="https://image.tmdb.org/t/p/w300/4UjiPdFKJGJYdxwRs2Rzg7EmWqr.jpg" alt="Poster" class="movie-slide">
+    <img src="https://image.tmdb.org/t/p/w300/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" alt="Poster" class="movie-slide">
+  </div>
+</section>
   
   <!-- Latest Releases -->  <section class="px-4 py-8">
     <h2 class="text-3xl font-bold mb-4">Latest Releases</h2>
@@ -370,7 +394,43 @@ document.addEventListener('click', (e) => {
       start: "top 80%",
     }
   });
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script>
+  const wrapper = document.getElementById('sliderWrapper');
+  const slides = gsap.utils.toArray('.movie-slide');
+
+  const totalWidth = slides.reduce((sum, slide) => sum + slide.offsetWidth + 16, 0); // +gap
+
+  // Set container back to zero
+  gsap.set(wrapper, { x: 0 });
+
+  // Infinite auto-scrolling
+  const scrollAnim = gsap.to(wrapper, {
+    x: `-=${totalWidth}`,
+    duration: 40,
+    ease: "linear",
+    repeat: -1,
+    modifiers: {
+      x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
+    }
+  });
+
+  // Pause on hover
+  wrapper.addEventListener("mouseenter", () => scrollAnim.pause());
+  wrapper.addEventListener("mouseleave", () => scrollAnim.play());
+
+  // Zoom-in effect on hover using GSAP
+  slides.forEach(slide => {
+    slide.addEventListener("mouseenter", () => {
+      gsap.to(slide, { scale: 1.1, duration: 0.3, ease: "power2.out" });
+    });
+
+    slide.addEventListener("mouseleave", () => {
+      gsap.to(slide, { scale: 1, duration: 0.3, ease: "power2.inOut" });
+    });
+  });
+</script>
 </body>
   </html>
-  
+
