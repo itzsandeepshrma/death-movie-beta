@@ -315,7 +315,7 @@
   }
 
   menuBtn.addEventListener("click", openMenu);
-  closeMenuBtn.addEventListener("click", closeMenu);
+closeMenuBtn.addEventListener("click", closeMenu);
 
   // Close on link click inside mobile menu
   mobileLinks.forEach(link => {
@@ -323,6 +323,16 @@
       closeMenu();
     });
   });
+
+    // Close menu if clicked outside the menu content
+document.addEventListener('click', (e) => {
+  const isClickInsideMenu = mobileMenu.contains(e.target);
+  const isMenuButton = menuBtn.contains(e.target);
+
+  if (menuOpen && !isClickInsideMenu && !isMenuButton) {
+    closeMenu();
+  }
+});
 
   // Close on Escape
   document.addEventListener("keydown", (e) => {
