@@ -297,12 +297,26 @@
   const mobileLinks = mobileMenu.querySelectorAll("a");
   let menuOpen = false;
 
-  function openMenu() {
-    mobileMenu.classList.remove("hidden");
-    document.body.classList.add("no-scroll");
-    gsap.fromTo("#mobileMenu nav a", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 });
-    menuOpen = true;
-  }
+
+    function openMenu() {
+  mobileMenu.classList.remove("hidden");
+  document.body.classList.add("no-scroll");
+  gsap.fromTo("#mobileMenu nav a", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 });
+  menuOpen = true;
+
+  // Delay to avoid immediate close after open
+  setTimeout(() => {
+    document.body.setAttribute('data-menu-open', 'true');
+  }, 10);
+    }
+
+
+
+
+
+
+
+    
 
   function closeMenu() {
     gsap.to("#mobileMenu nav a", {
@@ -325,14 +339,7 @@ closeMenuBtn.addEventListener("click", closeMenu);
   });
 
     // Close menu if clicked outside the menu content
-document.addEventListener('click', (e) => {
-  const isClickInsideMenu = mobileMenu.contains(e.target);
-  const isMenuButton = menuBtn.contains(e.target);
 
-  if (menuOpen && !isClickInsideMenu && !isMenuButton) {
-    closeMenu();
-  }
-});
 
   // Close on Escape
   document.addEventListener("keydown", (e) => {
@@ -364,6 +371,15 @@ document.addEventListener('click', (e) => {
     opacity: 0,
     y: 30,
     duration: 1,
+    document.addEventListener('click', (e) => {
+  const isMenuButton = menuBtn.contains(e.target);
+
+  if (menuOpen && !isMenuButton) {
+    closeMenu();
+  }
+});
+    
+    on: 1,
     stagger: 0.2,
     scrollTrigger: {
       trigger: "#premiumTagline",
