@@ -315,8 +315,41 @@
     });
   });
 </script>
-  <script>
-  // Dynamic Hero Section Data
+  <!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script>
+  // Theme Toggle
+  function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    html.classList.toggle('dark');
+    icon.classList.toggle('fa-sun');
+    icon.classList.toggle('fa-moon');
+  }
+
+  // Modal Functions
+  function showDetails(title, genre, duration, rating) {
+    document.getElementById('movieModal').classList.remove('hidden');
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalGenre').textContent = genre;
+    document.getElementById('modalDuration').textContent = duration;
+    document.getElementById('modalRating').textContent = rating;
+  }
+
+  function closeModal() {
+    document.getElementById('movieModal').classList.add('hidden');
+  }
+
+  // GSAP Reveal Animations
+  gsap.from('section', {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    stagger: 0.2
+  });
+
+  // Hero Section Data and Animation
   const heroMovies = [
     {
       title: "Now Streaming: Avengers: Endgame",
@@ -343,21 +376,26 @@
     const title = document.getElementById("heroTitle");
     const desc = document.getElementById("heroDesc");
 
-    gsap.to(title, { opacity: 0, y: -20, duration: 0.4 });
-    gsap.to(desc, { opacity: 0, y: -20, duration: 0.4, onComplete: () => {
-      section.style.backgroundImage = `url('${movie.bg}')`;
-      title.textContent = movie.title;
-      desc.textContent = movie.description;
-      gsap.fromTo(title, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 });
-      gsap.fromTo(desc, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 });
-    }});
+    gsap.to([title, desc], {
+      opacity: 0,
+      y: -20,
+      duration: 0.4,
+      onComplete: () => {
+        section.style.backgroundImage = `url('${movie.bg}')`;
+        title.textContent = movie.title;
+        desc.textContent = movie.description;
+
+        gsap.fromTo(title, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 });
+        gsap.fromTo(desc, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 });
+      }
+    });
 
     currentHeroIndex = (currentHeroIndex + 1) % heroMovies.length;
   }
 
-  setInterval(updateHeroSection, 5000); // Change every 5 seconds
-        </script>
-  <script>
+  setInterval(updateHeroSection, 5000);
+
+  // Mobile Menu
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobileMenu");
   const closeMenuBtn = document.getElementById("closeMenuBtn");
@@ -373,7 +411,12 @@
 
   function closeMenu() {
     gsap.to("#mobileMenu nav a", {
-      opacity: 0, y: -20, duration: 0.3, stagger: 0.05, ease: "power2.in", onComplete: () => {
+      opacity: 0,
+      y: -20,
+      duration: 0.3,
+      stagger: 0.05,
+      ease: "power2.in",
+      onComplete: () => {
         mobileMenu.classList.add("hidden");
         document.body.classList.remove("no-scroll");
         menuOpen = false;
@@ -382,31 +425,21 @@
   }
 
   menuBtn.addEventListener("click", openMenu);
-closeMenuBtn.addEventListener("click", closeMenu);
+  closeMenuBtn.addEventListener("click", closeMenu);
 
-  // Close on link click inside mobile menu
-  mobileLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      closeMenu();
-    });
+  mobileLinks.forEach(link => link.addEventListener("click", closeMenu));
+
+  document.addEventListener("click", (e) => {
+    const isInside = mobileMenu.contains(e.target);
+    const isMenuBtn = menuBtn.contains(e.target);
+    if (menuOpen && !isInside && !isMenuBtn) closeMenu();
   });
 
-    // Close menu if clicked outside the menu content
-document.addEventListener('click', (e) => {
-  const isClickInsideMenu = mobileMenu.contains(e.target);
-  const isMenuButton = menuBtn.contains(e.target);
-
-  if (menuOpen && !isClickInsideMenu && !isMenuButton) {
-    closeMenu();
-  }
-});
-
-  // Close on Escape
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && menuOpen) closeMenu();
   });
 
-  // Highlight active link (for desktop nav)
+  // Highlight Active Nav Link (Desktop)
   const navLinks = document.querySelectorAll("header nav a");
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
@@ -415,7 +448,8 @@ document.addEventListener('click', (e) => {
     });
   });
 </script>
-  <script>
+<script>
+  
 
   // Active link highlight logic
   const navLinks = document.querySelectorAll("header nav a");
