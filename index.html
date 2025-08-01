@@ -168,50 +168,33 @@
   <img src="https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg" alt="Avengers: Endgame" class="rounded-lg movie-poster">
   <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 rounded text-sm">Avengers: Endgame</div>
 </div>
-
-<!-- Jujutsu Kaisen 0 -->
 <div class="cursor-pointer group relative" onclick="showDetails('Jujutsu Kaisen 0','Animation, Action, Fantasy','1h 45min','7.9')">
   <img src="https://image.tmdb.org/t/p/w500/3pTwMUEavTzVOh6yLN0aEwR7uSy.jpg" alt="Jujutsu Kaisen 0" class="rounded-lg movie-poster">
   <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 rounded text-sm">Jujutsu Kaisen 0</div>
 </div>
-
-<!-- Interstellar -->
 <div class="cursor-pointer group relative" onclick="showDetails('Interstellar','Sci-Fi, Adventure','2h 49min','8.6')">
   <img src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interstellar" class="rounded-lg movie-poster">
   <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 rounded text-sm">Interstellar</div>
 </div>
-
-<!-- Demon Slayer: Mugen Train -->
 <div class="cursor-pointer group relative" onclick="showDetails('Demon Slayer: Mugen Train','Animation, Action, Fantasy','1h 57min','8.2')">
   <img src="https://image.tmdb.org/t/p/w500/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg" alt="Demon Slayer: Mugen Train" class="rounded-lg movie-poster">
   <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 rounded text-sm">Mugen Train</div>
 </div>
-
-<!-- Spider-Man: No Way Home -->
 <div class="cursor-pointer group relative" onclick="showDetails('Spider-Man: No Way Home','Action, Sci-Fi, Adventure','2h 28min','8.2')">
   <img src="https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" alt="No Way Home" class="rounded-lg movie-poster">
   <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 rounded text-sm">No Way Home</div>
 </div>
-
-<!-- Attack on Titan Final Season -->
 <div class="cursor-pointer group relative" onclick="showDetails('Attack on Titan Final Season','Animation, Action, Drama','24 Episodes','9.0')">
   <img src="https://image.tmdb.org/t/p/w500/4UjiPdFKJGJYdxwRs2Rzg7EmWqr.jpg" alt="AOT Final Season" class="rounded-lg movie-poster">
   <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 rounded text-sm">AOT Final Season</div>
 </div>
-
-<!-- Inception -->
 <div class="cursor-pointer group relative" onclick="showDetails('Inception','Action, Sci-Fi, Thriller','2h 28min','8.8')">
   <img src="https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg" alt="Inception" class="rounded-lg movie-poster">
   <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 rounded text-sm">Inception</div>
 </div>
-
-
-
-
-
-      
     </div>
-  </section>  <!-- Movie Details Modal -->  <div id="movieModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50">
+  </section>  
+    <div id="movieModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50">
     <div class="bg-white dark:bg-black text-black dark:text-white p-6 rounded-lg max-w-md w-full">
       <h3 id="modalTitle" class="text-2xl font-bold mb-2">Movie Title</h3>
       <p><strong>Genre:</strong> <span id="modalGenre"></span></p>
@@ -237,7 +220,6 @@
     </div>
   </div>
   </footer>
-
   <script>
     
   function toggleTheme() {
@@ -254,8 +236,6 @@
     icon.classList.add('fa-sun');
   }
 }
-  
-
     function showDetails(title, genre, duration, rating) {
       document.getElementById('movieModal').classList.remove('hidden');
       document.getElementById('modalTitle').textContent = title;
@@ -263,17 +243,13 @@
       document.getElementById('modalDuration').textContent = duration;
       document.getElementById('modalRating').textContent = rating;
     }
-
     function closeModal() {
       document.getElementById('movieModal').classList.add('hidden');
     }
-
-  
     gsap.from('section', {opacity: 0, y: 50, duration: 1, stagger: 0.2});
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script>
-  // Dynamic Hero Section Data
   const heroMovies = [
     {
       title: "Now Streaming: Avengers: Endgame",
@@ -291,9 +267,7 @@
       bg: "https://image.tmdb.org/t/p/original/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg"
     }
   ];
-
   let currentHeroIndex = 0;
-
   function updateHeroSection() {
     const movie = heroMovies[currentHeroIndex];
     const section = document.getElementById("heroSection");
@@ -308,26 +282,22 @@
       gsap.fromTo(title, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 });
       gsap.fromTo(desc, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 });
     }});
-
     currentHeroIndex = (currentHeroIndex + 1) % heroMovies.length;
   }
-
-  setInterval(updateHeroSection, 5000); // Change every 5 seconds
-        </script>
+  setInterval(updateHeroSection, 5000);
+  </script>
   <script>
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobileMenu");
   const closeMenuBtn = document.getElementById("closeMenuBtn");
   const mobileLinks = mobileMenu.querySelectorAll("a");
   let menuOpen = false;
-
   function openMenu() {
     mobileMenu.classList.remove("hidden");
     document.body.classList.add("no-scroll");
     gsap.fromTo("#mobileMenu nav a", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 });
     menuOpen = true;
   }
-
   function closeMenu() {
     gsap.to("#mobileMenu nav a", {
       opacity: 0, y: -20, duration: 0.3, stagger: 0.05, ease: "power2.in", onComplete: () => {
@@ -337,33 +307,23 @@
       }
     });
   }
-
   menuBtn.addEventListener("click", openMenu);
 closeMenuBtn.addEventListener("click", closeMenu);
-
-  // Close on link click inside mobile menu
   mobileLinks.forEach(link => {
     link.addEventListener("click", () => {
       closeMenu();
     });
   });
-
-    // Close menu if clicked outside the menu content
 document.addEventListener('click', (e) => {
   const isClickInsideMenu = mobileMenu.contains(e.target);
   const isMenuButton = menuBtn.contains(e.target);
-
   if (menuOpen && !isClickInsideMenu && !isMenuButton) {
     closeMenu();
   }
 });
-
-  // Close on Escape
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && menuOpen) closeMenu();
   });
-
-  // Highlight active link (for desktop nav)
   const navLinks = document.querySelectorAll("header nav a");
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
@@ -373,8 +333,6 @@ document.addEventListener('click', (e) => {
   });
 </script>
   <script>
-
-  // Active link highlight logic
   const navLinks = document.querySelectorAll("header nav a");
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
@@ -395,17 +353,11 @@ document.addEventListener('click', (e) => {
     }
   });
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
 <script>
   const wrapper = document.getElementById('sliderWrapper');
   const slides = gsap.utils.toArray('.movie-slide');
-
   const totalWidth = slides.reduce((sum, slide) => sum + slide.offsetWidth + 16, 0); // +gap
-
-  // Set container back to zero
   gsap.set(wrapper, { x: 0 });
-
-  // Infinite auto-scrolling
   const scrollAnim = gsap.to(wrapper, {
     x: `-=${totalWidth}`,
     duration: 40,
@@ -415,23 +367,16 @@ document.addEventListener('click', (e) => {
       x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
     }
   });
-
-  // Pause on hover
   wrapper.addEventListener("mouseenter", () => scrollAnim.pause());
   wrapper.addEventListener("mouseleave", () => scrollAnim.play());
-
-  // Zoom-in effect on hover using GSAP
   slides.forEach(slide => {
     slide.addEventListener("mouseenter", () => {
       gsap.to(slide, { scale: 1.1, duration: 0.3, ease: "power2.out" });
     });
-
     slide.addEventListener("mouseleave", () => {
       gsap.to(slide, { scale: 1, duration: 0.3, ease: "power2.inOut" });
     });
   });
 </script>
 </body>
-  </html>
-
-  
+</html>
