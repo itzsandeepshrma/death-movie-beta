@@ -269,41 +269,53 @@
   </div>
 </footer>
 
-  <script>
-    
-  function toggleTheme() {
-  const html = document.documentElement;
-  const icon = document.getElementById('theme-icon');
+  <!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
 
-  if (html.classList.contains('dark')) {
-    html.classList.remove('dark');
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
-  } else {
-    html.classList.add('dark');
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  }
-}
-  
-
-    function showDetails(title, genre, duration, rating) {
-      document.getElementById('movieModal').classList.remove('hidden');
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalGenre').textContent = genre;
-      document.getElementById('modalDuration').textContent = duration;
-      document.getElementById('modalRating').textContent = rating;
-    }
-
-    function closeModal() {
-      document.getElementById('movieModal').classList.add('hidden');
-    }
-
-  
-    gsap.from('section', {opacity: 0, y: 50, duration: 1, stagger: 0.2});
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<!-- App Scripts -->
 <script>
+  // Toggle Dark/Light Theme
+  function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+
+    if (html.classList.contains('dark')) {
+      html.classList.remove('dark');
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+    } else {
+      html.classList.add('dark');
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    }
+  }
+
+  // Show Movie Details in Modal
+  function showDetails(title, genre, duration, rating) {
+    document.getElementById('movieModal').classList.remove('hidden');
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalGenre').textContent = genre;
+    document.getElementById('modalDuration').textContent = duration;
+    document.getElementById('modalRating').textContent = rating;
+  }
+
+  // Close Movie Modal
+  function closeModal() {
+    document.getElementById('movieModal').classList.add('hidden');
+  }
+
+  // Animate Sections with GSAP
+  document.addEventListener('DOMContentLoaded', () => {
+    gsap.from('section', {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power2.out'
+    });
+  });
+</script>
+  <script>
   // Dynamic Hero Section Data
   const heroMovies = [
     {
