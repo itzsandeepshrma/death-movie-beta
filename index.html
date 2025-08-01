@@ -234,32 +234,40 @@
   </div>
 </section>
       
-    <!-- Movie Details Modal -->  <div id="movieModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50">
-    <div class="bg-white dark:bg-black text-black dark:text-white p-6 rounded-lg max-w-md w-full">
-      <h3 id="modalTitle" class="text-2xl font-bold mb-2">Movie Title</h3>
-      <p><strong>Genre:</strong> <span id="modalGenre"></span></p>
-      <p><strong>Duration:</strong> <span id="modalDuration"></span></p>
-      <p><strong>IMDb:</strong> <span id="modalRating"></span></p>
-      <button onclick="closeModal()" class="mt-4 px-4 py-2 bg-red-600 text-white rounded">Close</button>
-    </div>
-  </div> 
+    <!-- =================== Movie Details Modal =================== -->
+<div id="movieModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50">
+  <div class="bg-white dark:bg-black text-black dark:text-white p-6 rounded-lg max-w-md w-full shadow-lg relative">
+    <h3 id="modalTitle" class="text-2xl font-bold mb-4">Movie Title</h3>
+    <p class="mb-2"><strong>Genre:</strong> <span id="modalGenre">Action</span></p>
+    <p class="mb-2"><strong>Duration:</strong> <span id="modalDuration">2h 10m</span></p>
+    <p class="mb-4"><strong>IMDb:</strong> <span id="modalRating">8.5</span></p>
+    <button onclick="closeModal()" class="w-full py-2 bg-red-600 text-white rounded hover:bg-red-700 transition duration-300">
+      Close
+    </button>
+  </div>
+</div>
 
-  <footer class="bg-black dark:bg-white text-white dark:text-black mt-10 border-t border-gray-700 dark:border-gray-300">
-  <div class="max-w-6xl mx-auto px-4 py-10 text-center space-y-3 text-sm font-medium">
+<!-- =================== Footer =================== -->
+<footer class="bg-black dark:bg-white text-white dark:text-black mt-12 border-t border-gray-700 dark:border-gray-300">
+  <div class="max-w-6xl mx-auto px-4 py-10 text-center space-y-4 text-sm font-medium">
+    
+    <!-- Footer Navigation Links -->
     <div class="flex flex-wrap justify-center gap-4">
-      <a href="#" class="hover:text-red-500 transition">How to Download</a>
-      <a href="#" class="hover:text-red-500 transition">Report Broken Links</a>
-      <a href="#" class="hover:text-red-500 transition">About Us</a>
-      <a href="#" class="hover:text-red-500 transition">Contact</a>
-      <a href="#" class="hover:text-red-500 transition">Request Movie</a>
-      <a href="#" class="hover:text-red-500 transition">Privacy Policy</a>
-      <a href="#" class="hover:text-red-500 transition">DMCA</a>
+      <a href="#" class="hover:text-red-500 transition duration-300">How to Download</a>
+      <a href="#" class="hover:text-red-500 transition duration-300">Report Broken Links</a>
+      <a href="#" class="hover:text-red-500 transition duration-300">About Us</a>
+      <a href="#" class="hover:text-red-500 transition duration-300">Contact</a>
+      <a href="#" class="hover:text-red-500 transition duration-300">Request Movie</a>
+      <a href="#" class="hover:text-red-500 transition duration-300">Privacy Policy</a>
+      <a href="#" class="hover:text-red-500 transition duration-300">DMCA</a>
     </div>
-    <div class="text-gray-400 text-xs mt-4">
-      © 2025 Death Movies. All Rights Reserved.
+
+    <!-- Copyright -->
+    <div class="text-gray-400 text-xs">
+      © 2025 <strong>Death Movies</strong>. All Rights Reserved.
     </div>
   </div>
-  </footer>
+</footer>
 
   <script>
     
