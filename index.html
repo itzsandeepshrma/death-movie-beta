@@ -50,36 +50,29 @@
       transform: scale(1.2);
     }
     .movie-slide {
-    height: 160px; /* smaller size */
+    height: 160px; 
     border-radius: 0.5rem;
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     transition: transform 0.3s ease;
     will-change: transform;
   }
-
-  #sliderWrapper:hover .movie-slide {
+  #sliderWrapper:hover 
+    .movie-slide {
     pointer-events: auto;
   }
   </style>
-</head><body class="bg-black text-white dark:bg-white dark:text-black">
-<!-- Header -->
-
-
+</head>
+  <body class="bg-black text-white dark:bg-white dark:text-black">
   <header class="w-full bg-black dark:bg-white border-b border-gray-700 dark:border-gray-300 p-4 relative z-50">
   <div class="flex items-center justify-between">
-
-    <!-- Left: Logo -->
     <div class="flex items-center gap-4">
-      <!-- Hamburger: Hidden on md and above -->
       <div id="menu-btn" class="flex flex-col justify-center items-start space-y-1 cursor-pointer md:hidden focus:outline-none focus:ring-0">
         <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
         <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
         <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
       </div>
-
-      <!-- Logo Image -->
+      
 <img src="img/death.png" alt="Death Movie Logo" class="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 w-auto object-contain" />
-      <!-- Desktop Navigation: Only visible on md and above -->
       <nav class="hidden md:flex gap-6 text-white dark:text-black text-sm font-semibold ml-6">
         <a href="#" class="hover:text-red-500 transition">Hollywood</a>
         <a href="#" class="hover:text-red-500 transition">Bollywood</a>
@@ -90,7 +83,6 @@
       </nav>
     </div>
 
-<!-- Right: Theme + Telegram -->
 <div class="flex items-center gap-4">
   <button onclick="toggleTheme()" aria-label="Toggle Theme">
     <i id="theme-icon" class="fas fa-moon text-xl transition duration-300"></i>
@@ -100,12 +92,7 @@
 </div>
   </header>
 
-
-
-
-  <!-- Mobile Navigation Menu -->
 <div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-black dark:bg-white hidden flex-col items-start justify-start z-40 px-6 pt-24">
-  <!-- Close Button -->
   <div class="absolute top-6 left-6 text-white dark:text-black text-3xl cursor-pointer" id="closeMenuBtn">
   &times;
   </div>
@@ -121,14 +108,7 @@
   </nav>
 </div>
 
-  
-    
-
-
-  <!-- Premium Tagline Section with Search Bar -->
 <section id="premiumTagline" class="w-full bg-dark dark:bg-white flex flex-col items-center justify-center py-10 px-4 space-y-6 transition duration-300">
-
-<!-- Search Bar -->
 <div class="relative w-full max-w-xl mx-auto shadow-lg">
   <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
     viewBox="0 0 24 24">
@@ -144,35 +124,16 @@
            placeholder-gray-500 dark:placeholder-gray-400 
            border border-gray-300 dark:border-zinc-700 
            focus:outline-none focus:ring-2 focus:ring-red-600 
-           transition duration-300"
-  />
+           transition duration-300" />
 </div>
-  <!-- Tagline -->
   <p class="text-red-500 text-sm sm:text-base md:text-lg font-semibold tracking-wide text-center whitespace-nowrap">
     Your premium destination for high quality Movies
   </p>
-
 </section>
-  
 
-
-
-  
-
-
-
-
-
-
-
-  
-
-<!-- Movie Poster Slider -->
 <section id="movieSlider" class="w-full overflow-hidden py-10">
   <h2 class="text-xl md:text-2xl font-bold text-left mb-6 px-6">Movies</h2>
   <div id="sliderWrapper" class="flex gap-4 px-6 w-max">
-    <!-- Movie cards go here -->
-    <!-- Movie Posters -->
     <img src="https://image.tmdb.org/t/p/w300/3pTwMUEavTzVOh6yLN0aEwR7uSy.jpg" alt="Poster" class="movie-slide">
     <img src="https://image.tmdb.org/t/p/w300/or06FN3Dka5tukK1e9sl16pB3iy.jpg" alt="Poster" class="movie-slide">
     <img src="https://image.tmdb.org/t/p/w300/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg" alt="Poster" class="movie-slide">
@@ -184,42 +145,25 @@
   </div>
 </section>
 
-<!-- Telegram Banner Button (Centered on all screens) -->
 <div class="flex justify-center px-4 pb-6">
   <a href="https://t.me/deathchatting_world" target="_blank"
     class="whitespace-nowrap inline-flex items-center px-4 py-2 md:px-6 md:py-3 rounded-full text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow-md hover:opacity-90 transition text-sm md:text-base">
-    
-    <!-- Chat Icon -->
     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4 8-9 8-1.5 0-2.9-.3-4.1-.9L3 21l1.4-3.9C3.5 15.8 3 13.9 3 12c0-4.418 4-8 9-8s9 3.6 9 8z" />
     </svg>
-
     <span class="font-medium">Domains & updates: Telegram channel's</span>
   </a>
 </div>
 
-
-
-
-
-
-  
-  <!-- Latest Releases -->  <section class="px-4 py-8">
+<section class="px-4 py-8">
   <h2 class="text-xl md:text-2xl font-bold mb-4">Latest Releases</h2>
   <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-    <!-- Movie cards go here -->
-  
-      <!-- Movie Card -->
       <div class="cursor-pointer group relative" onclick="showDetails('John Wick 4','Action, Thriller','2h 49min','7.9')">
         <img src="https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" alt="John Wick 4" class="rounded-lg movie-poster">
         <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 rounded text-sm">John Wick 4</div>
       </div>
-      <!-- Add more movie cards here -->
 
-      <!-- John Wick 4 already added above -->
-
-<!-- Avengers: Endgame -->
 <div class="cursor-pointer group relative" onclick="showDetails('Avengers: Endgame','Action, Sci-Fi','3h 1min','8.4')">
   <img src="https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg" alt="Avengers: Endgame" class="rounded-lg movie-poster">
   <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 rounded text-sm">Avengers: Endgame</div>
