@@ -1,39 +1,52 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Death Movie</title>
+  
+  <!-- Fonts & Frameworks -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Tailwind Dark Mode Config -->
   <script>
     tailwind.config = {
       darkMode: 'class'
     };
   </script>
+
+  <!-- Custom Styles -->
   <style>
     .movie-poster:hover {
       transform: scale(1.05);
       transition: 0.3s ease-in-out;
     }
+
     .glass {
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
+
     .footer {
       text-align: center;
       padding: 2rem;
       color: #aaa;
       font-size: 0.9rem;
     }
-  #menu-btn:focus {
-    outline: none !important;
-    box-shadow: none !important;
-  }
-    .no-scroll {
-  overflow: hidden;
-  height: 100vh;
+
+    #menu-btn:focus {
+      outline: none !important;
+      box-shadow: none !important;
     }
+
+    .no-scroll {
+      overflow: hidden;
+      height: 100vh;
+    }
+
     .social-links {
       margin-top: 20px;
     }
@@ -49,140 +62,106 @@
       color: #ff0000;
       transform: scale(1.2);
     }
+
     .movie-slide {
-    height: 160px; /* smaller size */
-    border-radius: 0.5rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
-    will-change: transform;
-  }
+      height: 160px;
+      border-radius: 0.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
 
-  #sliderWrapper:hover .movie-slide {
-    pointer-events: auto;
-  }
+    #sliderWrapper:hover .movie-slide {
+      pointer-events: auto;
+    }
   </style>
-</head><body class="bg-black text-white dark:bg-white dark:text-black">
-<!-- Header -->
+</head>
 
-
+<body class="bg-black text-white dark:bg-white dark:text-black">
+  <!-- =================== Header =================== -->
   <header class="w-full bg-black dark:bg-white border-b border-gray-700 dark:border-gray-300 p-4 relative z-50">
-  <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between">
 
-    <!-- Left: Logo -->
-    <div class="flex items-center gap-4">
-      <!-- Hamburger: Hidden on md and above -->
-      <div id="menu-btn" class="flex flex-col justify-center items-start space-y-1 cursor-pointer md:hidden focus:outline-none focus:ring-0">
-        <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
-        <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
-        <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
+      <!-- Left: Logo & Menu -->
+      <div class="flex items-center gap-4">
+        <!-- Hamburger -->
+        <div id="menu-btn" class="flex flex-col justify-center items-start space-y-1 cursor-pointer md:hidden focus:outline-none focus:ring-0">
+          <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
+          <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
+          <div class="w-5 h-0.5 bg-white dark:bg-black"></div>
+        </div>
+
+        <!-- Logo -->
+        <img src="img/death.png" alt="Death Movie Logo" class="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 w-auto object-contain" />
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex gap-6 text-white dark:text-black text-sm font-semibold ml-6">
+          <a href="#" class="hover:text-red-500 transition">Hollywood</a>
+          <a href="#" class="hover:text-red-500 transition">Bollywood</a>
+          <a href="#" class="hover:text-red-500 transition">Web Series</a>
+          <a href="#" class="hover:text-red-500 transition">Dual Audio</a>
+          <a href="#" class="hover:text-red-500 transition">K-Drama</a>
+          <a href="#" class="hover:text-red-500 transition">Horror</a>
+        </nav>
       </div>
 
-      <!-- Logo Image -->
-<img src="img/death.png" alt="Death Movie Logo" class="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 w-auto object-contain" />
-      <!-- Desktop Navigation: Only visible on md and above -->
-      <nav class="hidden md:flex gap-6 text-white dark:text-black text-sm font-semibold ml-6">
-        <a href="#" class="hover:text-red-500 transition">Hollywood</a>
-        <a href="#" class="hover:text-red-500 transition">Bollywood</a>
-        <a href="#" class="hover:text-red-500 transition">Web Series</a>
-        <a href="#" class="hover:text-red-500 transition">Dual Audio</a>
-        <a href="#" class="hover:text-red-500 transition">K-Drama</a>
-        <a href="#" class="hover:text-red-500 transition">Horror</a>
-      </nav>
+      <!-- Right: Theme + Telegram -->
+      <div class="flex items-center gap-4">
+        <button onclick="toggleTheme()" aria-label="Toggle Theme">
+          <i id="theme-icon" class="fas fa-moon text-xl transition duration-300"></i>
+        </button>
+        <a href="https://t.me/deathchatting_world" target="_blank"><i class="fab fa-telegram"></i></a>
+      </div>
     </div>
-
-<!-- Right: Theme + Telegram -->
-<div class="flex items-center gap-4">
-  <button onclick="toggleTheme()" aria-label="Toggle Theme">
-    <i id="theme-icon" class="fas fa-moon text-xl transition duration-300"></i>
-  </button>
-  <a href="https://t.me/deathchatting_world" target="_blank"><i class="fab fa-telegram"></i></a>
-  </a>
-</div>
   </header>
 
+  <!-- =================== Mobile Menu =================== -->
+  <div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-black dark:bg-white hidden flex-col items-start justify-start z-40 px-6 pt-24">
+    <!-- Close Button -->
+    <div class="absolute top-6 left-6 text-white dark:text-black text-3xl cursor-pointer" id="closeMenuBtn">&times;</div>
 
-
-
-  <!-- Mobile Navigation Menu -->
-<div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-black dark:bg-white hidden flex-col items-start justify-start z-40 px-6 pt-24">
-  <!-- Close Button -->
-  <div class="absolute top-6 left-6 text-white dark:text-black text-3xl cursor-pointer" id="closeMenuBtn">
-  &times;
+    <!-- Mobile Navigation -->
+    <nav class="flex flex-col space-y-6 text-2xl font-extrabold text-white dark:text-black text-left pl-4">
+      <a href="#" class="hover:text-red-500 transition">Home</a>
+      <a href="#" class="hover:text-red-500 transition">Hollywood</a>
+      <a href="#" class="hover:text-red-500 transition">Bollywood</a>
+      <a href="#" class="hover:text-red-500 transition">Web Series</a>
+      <a href="#" class="hover:text-red-500 transition">Dual Audio</a>
+      <a href="#" class="hover:text-red-500 transition">K-Drama</a>
+      <a href="#" class="hover:text-red-500 transition">Horror</a>
+    </nav>
   </div>
 
-  <nav class="flex flex-col space-y-6 text-2xl font-extrabold text-white dark:text-black text-left pl-4">
-    <a href="#" class="hover:text-red-500 transition">Home</a>
-  <a href="#" class="hover:text-red-500 transition">Hollywood</a>
-  <a href="#" class="hover:text-red-500 transition">Bollywood</a>
-  <a href="#" class="hover:text-red-500 transition">Web Series</a>
-  <a href="#" class="hover:text-red-500 transition">Dual Audio</a>
-  <a href="#" class="hover:text-red-500 transition">K-Drama</a>
-  <a href="#" class="hover:text-red-500 transition">Horror</a>
-  </nav>
-</div>
+  <!-- =================== Tagline & Search =================== -->
+  <section id="premiumTagline" class="w-full bg-dark dark:bg-white flex flex-col items-center justify-center py-10 px-4 space-y-6 transition duration-300">
+    <!-- Search Bar -->
+    <div class="relative w-full max-w-xl mx-auto shadow-lg">
+      <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z" />
+      </svg>
+      <input type="text" placeholder="Search high-quality movies..." class="w-full pl-12 pr-4 py-3 rounded-full bg-white text-black dark:bg-zinc-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 border border-gray-300 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-red-600 transition duration-300" />
+    </div>
+    <!-- Tagline -->
+    <p class="text-red-500 text-sm sm:text-base md:text-lg font-semibold tracking-wide text-center whitespace-nowrap">
+      Your premium destination for high quality Movies
+    </p>
+  </section>
 
-  
-    
-
-
-  <!-- Premium Tagline Section with Search Bar -->
-<section id="premiumTagline" class="w-full bg-dark dark:bg-white flex flex-col items-center justify-center py-10 px-4 space-y-6 transition duration-300">
-
-<!-- Search Bar -->
-<div class="relative w-full max-w-xl mx-auto shadow-lg">
-  <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-    viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round"
-      d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z" />
-  </svg>
-  <input
-    type="text"
-    placeholder="Search high-quality movies..."
-    class="w-full pl-12 pr-4 py-3 rounded-full 
-           bg-white text-black 
-           dark:bg-zinc-800 dark:text-white 
-           placeholder-gray-500 dark:placeholder-gray-400 
-           border border-gray-300 dark:border-zinc-700 
-           focus:outline-none focus:ring-2 focus:ring-red-600 
-           transition duration-300"
-  />
-</div>
-  <!-- Tagline -->
-  <p class="text-red-500 text-sm sm:text-base md:text-lg font-semibold tracking-wide text-center whitespace-nowrap">
-    Your premium destination for high quality Movies
-  </p>
-
-</section>
-  
-
-
-
-  
-
-
-
-
-
-
-
-  
-
-<!-- Movie Poster Slider -->
-<section id="movieSlider" class="w-full overflow-hidden py-10">
-  <h2 class="text-xl md:text-2xl font-bold text-left mb-6 px-6">Movies</h2>
-  <div id="sliderWrapper" class="flex gap-4 px-6 w-max">
-    <!-- Movie cards go here -->
-    <!-- Movie Posters -->
-    <img src="https://image.tmdb.org/t/p/w300/3pTwMUEavTzVOh6yLN0aEwR7uSy.jpg" alt="Poster" class="movie-slide">
-    <img src="https://image.tmdb.org/t/p/w300/or06FN3Dka5tukK1e9sl16pB3iy.jpg" alt="Poster" class="movie-slide">
-    <img src="https://image.tmdb.org/t/p/w300/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg" alt="Poster" class="movie-slide">
-    <img src="https://image.tmdb.org/t/p/w300/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Poster" class="movie-slide">
-    <img src="https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" alt="Poster" class="movie-slide">
-    <img src="https://image.tmdb.org/t/p/w300/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg" alt="Poster" class="movie-slide">
-    <img src="https://image.tmdb.org/t/p/w300/4UjiPdFKJGJYdxwRs2Rzg7EmWqr.jpg" alt="Poster" class="movie-slide">
-    <img src="https://image.tmdb.org/t/p/w300/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" alt="Poster" class="movie-slide">
-  </div>
-</section>
+  <!-- =================== Movie Poster Slider =================== -->
+  <section id="movieSlider" class="w-full overflow-hidden py-10">
+    <h2 class="text-xl md:text-2xl font-bold text-left mb-6 px-6">Movies</h2>
+    <div id="sliderWrapper" class="flex gap-4 px-6 w-max">
+      <!-- Posters (scrollable) -->
+      <img src="https://image.tmdb.org/t/p/w300/3pTwMUEavTzVOh6yLN0aEwR7uSy.jpg" alt="Poster" class="movie-slide">
+      <img src="https://image.tmdb.org/t/p/w300/or06FN3Dka5tukK1e9sl16pB3iy.jpg" alt="Poster" class="movie-slide">
+      <img src="https://image.tmdb.org/t/p/w300/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg" alt="Poster" class="movie-slide">
+      <img src="https://image.tmdb.org/t/p/w300/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Poster" class="movie-slide">
+      <img src="https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" alt="Poster" class="movie-slide">
+      <img src="https://image.tmdb.org/t/p/w300/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg" alt="Poster" class="movie-slide">
+      <img src="https://image.tmdb.org/t/p/w300/4UjiPdFKJGJYdxwRs2Rzg7EmWqr.jpg" alt="Poster" class="movie-slide">
+      <img src="https://image.tmdb.org/t/p/w300/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" alt="Poster" class="movie-slide">
+    </div>
+  </section>
 
 <!-- Telegram Banner Button (Centered on all screens) -->
 <div class="flex justify-center px-4 pb-6">
